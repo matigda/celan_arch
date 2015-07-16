@@ -3,7 +3,7 @@
 namespace BlogCore\Entity;
 
 
-class PostResponseDTO
+class ShowPostResponseDTO
 {
     /**
      * @var integer
@@ -46,5 +46,10 @@ class PostResponseDTO
     public function getContent()
     {
         return $this->content;
+    }
+
+    public function getCreated()
+    {
+        return $this->created;
     }
 }

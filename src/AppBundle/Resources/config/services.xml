@@ -45,5 +45,16 @@
             <argument type="service" id="interactor.post.get_by_requirements" />
         </service>
 
+        <service id="transformer.post.request.get_latest_posts" class="BlogCore\Transformer\Request\GetLatestPostsRequestTransformer">
+        </service>
+
+        <service id="transformer.post.response.show_latest_posts" class="BlogCore\Transformer\Response\ShowLatestPostsResponseTransformer">
+        </service>
+
+        <service id="interactor.post.show_latest_posts" class="BlogCore\Interactor\Post\ShowLatestPostsInteractor">
+            <argument type="service" id="interactor.post.get_latest" />
+            <argument type="service" id="transformer.post.response.show_latest_posts" />
+        </service>
+
     </services>
 </container>

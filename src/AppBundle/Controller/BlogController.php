@@ -11,10 +11,10 @@ class BlogController extends Controller
 
     public function indexAction()
     {
-        $posts = $this->get('interactor.post.get_latest')->execute(5);
+        $requestDTO = $this->get('transformer.post.request.get_latest_posts')->createDTO(array('amount' => 5));
 
         return $this->render('@App/Blog/index.html.twig', array(
-            'posts' => $posts
+            'posts' => $this->get('interactor.post.show_latest_posts')->execute($requestDTO)
         ));
     }
 

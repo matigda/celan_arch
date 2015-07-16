@@ -2,6 +2,7 @@
 
 namespace BlogCore\Interactor\Post;
 
+use BlogCore\Entity\LatestPostsRequestDTO;
 use BlogCore\Repository\PostRepositoryInterface;
 
 class GetLatestPostsInteractor
@@ -13,8 +14,8 @@ class GetLatestPostsInteractor
         $this->postRepository = $postRepository;
     }
 
-    public function execute($amount)
+    public function execute(LatestPostsRequestDTO $requestDTO)
     {
-        return $this->postRepository->findLatestPosts($amount);
+        return $this->postRepository->findLatestPosts($requestDTO->getAmount());
     }
 }
