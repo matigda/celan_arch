@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <form method="post">
+        {{ form_errors(form.title) }} {{ form_widget(form.title) }} <br />
+        {{ form_errors(form.content) }} {{ form_widget(form.content) }} <br />
+        {{ form_widget(form._token) }} <br />
+        <input type="submit">
+    </form>
+{% endblock %}

@@ -1,0 +1,14 @@
+{
+  "name": "blog/core-bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Mateusz Ditrich",
+      "email": "mateusz.ditrich@yahoo.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.2",
+    "symfony/validator": "~2.3"
+  }
+}

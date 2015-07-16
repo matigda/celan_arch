@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="repository.post"
+                 class="AppBundle\Repository\PostRepository"
+                 factory-service="doctrine.orm.entity_manager"
+                 factory-method="getRepository">
+            <argument>BlogCore\Entity\Post</argument>
+        </service>
+
+        <service id="interactor.post.get_latest" class="BlogCore\Interactor\Post\GetLatestPostsInteractor">
+            <argument type="service" id="repository.post" />
+        </service>
+
+        <service id="interactor.post.validator" class="BlogCore\Interactor\Post\PostValidatorInteractor">
+        </service>
+
+        <service id="interactor.post.save_new" class="BlogCore\Interactor\Post\SaveNewPostInteractor">
+            <argument type="service" id="repository.post" />
+        </service>
+
+        <service id="interactor.post.create_and_save" class="BlogCore\Interactor\Post\CreateAndSavePostInteractor">
+            <argument type="service" id="interactor.post.create_new" />
+            <argument type="service" id="interactor.post.save_new" />
+        </service>
+
+        <service id="interactor.post.create_new" class="BlogCore\Interactor\Post\CreateNewPostInteractor">
+        </service>
+
+        <service id="transformer.post.request.create_new" class="BlogCore\Transformer\Request\CreateNewPostRequestTransformer">
+        </service>
+
+        <service id="transformer.post.request.get_post" class="BlogCore\Transformer\Request\GetPostRequestTransformer">
+        </service>
+
+        <service id="interactor.post.get_by_requirements" class="BlogCore\Interactor\Post\GetPostInteractor">
+            <argument type="service" id="repository.post" />
+        </service>
+
+        <service id="interactor.post.show_post" class="BlogCore\Interactor\Post\ShowPostInteractor">
+            <argument type="service" id="interactor.post.get_by_requirements" />
+        </service>
+
+    </services>
+</container>
